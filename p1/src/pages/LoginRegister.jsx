@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginRegister.css';
 
-const LoginRegister = () => {
+const LoginRegister = ({ setIsAuthenticated }) => {
   const [showRegister, setShowRegister] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  // Función que simula inicio de sesión o registro
+  const handleLoginOrRegister = () => {
+    setIsAuthenticated(true);
+    navigate('/home');
+  };
 
   return (
     <div className="container">
@@ -22,11 +30,15 @@ const LoginRegister = () => {
                 onChange={() => setShowPassword(!showPassword)}
               /> Mostrar contraseña
             </label>
-            <button className="primary-btn">INICIAR SESIÓN</button>
+            <button className="primary-btn" onClick={handleLoginOrRegister}>
+              INICIAR SESIÓN
+            </button>
           </div>
           <div className="right">
             <p>Aún no tienes una cuenta?<br />Solicita tu registro aquí</p>
-            <button className="primary-btn" onClick={() => setShowRegister(true)}>INICIAR REGISTRO</button>
+            <button className="primary-btn" onClick={() => setShowRegister(true)}>
+              INICIAR REGISTRO
+            </button>
           </div>
         </div>
       ) : (
@@ -35,7 +47,9 @@ const LoginRegister = () => {
             <p>Regresar al inicio</p>
             <h2>Ya tienes una cuenta?</h2>
             <p>Es necesario iniciar sesión para realizar una solicitud</p>
-            <button className="primary-btn" onClick={() => setShowRegister(false)}>INICIAR SESIÓN</button>
+            <button className="primary-btn" onClick={() => setShowRegister(false)}>
+              INICIAR SESIÓN
+            </button>
           </div>
           <div className="right">
             <p>Para registrarte debes rellenar el formulario a continuación</p>
@@ -45,7 +59,9 @@ const LoginRegister = () => {
             <input type="text" placeholder="Lorem ipsum dolor" />
             <input type="text" placeholder="Lorem ipsum dolor" />
             <input type="text" placeholder="Lorem ipsum dolor" />
-            <button className="primary-btn">REGISTRAR</button>
+            <button className="primary-btn" onClick={handleLoginOrRegister}>
+              REGISTRAR
+            </button>
           </div>
         </div>
       )}

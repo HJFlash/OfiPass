@@ -1,0 +1,58 @@
+.dashboard-container {
+    height: 100vh;
+    background-color: #cce7f6;
+  }
+  
+  .header {
+    background-color: #5fa8d3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .circle {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+  .content {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .access-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  .access-table th,
+  .access-table td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .access-table th {
+    background-color: #f0f0f0;
+  }
+  
