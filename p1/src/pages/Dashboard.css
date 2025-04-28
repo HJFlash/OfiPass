@@ -1,58 +1,291 @@
+/* Estilos generales */
 .dashboard-container {
-    height: 100vh;
-    background-color: #cce7f6;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e6f2ff, #cce7f6);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
+  /* Header mejorado */
   .header {
-    background-color: #5fa8d3;
+    background: linear-gradient(to right, #5fa8d3, #3a7ca5);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 15px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
   
+  /* Navbar mejorado */
   .navbar {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    align-items: center;
   }
   
   .navbar a {
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
   }
   
   .navbar a:hover {
-    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transform: translateY(-2px);
   }
   
+  .navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar a:hover::after {
+    width: 70%;
+  }
+  
+  /* Indicador de estado (círculo) */
   .circle {
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    width: 12px;
+    height: 12px;
+    background-color: #4CAF50;
     border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+    animation: pulse 2s infinite;
   }
   
+  @keyframes pulse {
+    0% { transform: scale(0.95); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(0.95); }
+  }
+  
+  /* Contenido principal */
   .content {
     padding: 30px;
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
+  h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+  }
+  
+  h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #5fa8d3;
+    margin: 10px auto;
+    border-radius: 3px;
+  }
+  
+  /* Tabla de accesos mejorada */
   .access-table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 80%;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 95%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
   }
   
   .access-table th,
   .access-table td {
-    border: 1px solid #000;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
+    border: none;
   }
   
   .access-table th {
-    background-color: #f0f0f0;
+    background-color: #5fa8d3;
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
   }
   
+  .access-table tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  
+  .access-table tr:nth-child(odd) {
+    background-color: white;
+  }
+  
+  .access-table tr:hover {
+    background-color: #e6f2ff;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+  }
+  
+  /* Botones de acción */
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+  }
+  
+  .delete-btn::before {
+    content: '🗑️';
+  }
+  
+  .edit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+  }
+  
+  .edit-btn::before {
+    content: '✏️';
+  }
+  
+  /* Efectos y animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .access-table tr {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      padding: 15px;
+    }
+    
+    .navbar {
+      margin-top: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .access-table {
+      width: 100%;
+      display: block;
+      overflow-x: auto;
+    }
+    
+    .content {
+      padding: 20px 15px;
+    }
+    
+    .action-buttons {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  
+  /* Filtros y búsqueda (opcional) */
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .search-input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    min-width: 250px;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #5fa8d3;
+    box-shadow: 0 0 0 2px rgba(95, 168, 211, 0.2);
+  }
+  
+  .date-filter {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  /* Paginación (opcional) */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+  }
+  
+  .page-btn {
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .page-btn.active {
+    background-color: #5fa8d3;
+    color: white;
+  }
+  
+  .page-btn:hover:not(.active) {
+    background-color: #ddd;
+  }
