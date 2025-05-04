@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
+import { QRCodeCanvas } from 'qrcode.react';
 
 const Dashboard = () => {
   const [vista, setVista] = useState('inicio');
   const [seleccion, setSeleccion] = useState(null);
+  const [mostrarQR, setMostrarQR] = useState(false);
+  const [codigoQR, setCodigoQR] = useState('');
 
   const registros = [
     { id: 1, usuario: 'Juan Pérez', oficina: 'Oficina 1', hora: '09:00', fecha: '2025-04-27', empresa: 'Empresa A', tipoAcceso1: 'Entrada', tipoAcceso2: 'Manual' },
@@ -25,6 +28,21 @@ const Dashboard = () => {
     (vista === 'usuario' && r.usuario === seleccion)
   );
 
+  const handleSeleccionarOficina = (oficina) => {
+    setSeleccion(oficina);
+    setVista('opcionesOficina');
+  };
+
+  const handleGenerarQR = () => {
+    setCodigoQR(`URL para la oficina ${seleccion}`);
+    setMostrarQR(true);
+  };
+
+  const handleVerRegistros = () => {
+    setVista('oficina');
+    setMostrarQR(false);
+  };
+
   return (
     <div className="dashboard-container">
       <div className="content">
@@ -43,14 +61,32 @@ const Dashboard = () => {
             <h2>Selecciona una {vista}</h2>
             <div className="filter-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
               {(vista === 'oficina' ? oficinas : usuarios).map(item => (
-                <button key={item} className="edit-btn" onClick={() => setSeleccion(item)}>{item}</button>
+                <button key={item} className="edit-btn" onClick={() => vista === 'oficina' ? handleSeleccionarOficina(item) : setSeleccion(item)}>{item}</button>
               ))}
               <button className="delete-btn" onClick={() => setVista('inicio')}>← Volver</button>
             </div>
           </>
         )}
 
-        {seleccion && (
+        {vista === 'opcionesOficina' && (
+          <>
+            <h2>Selecciona una opción para {seleccion}</h2>
+            <div className="filter-container" style={{ flexDirection: 'column', alignItems: 'center' }}>
+              <button className="edit-btn" onClick={handleGenerarQR}>Generar Código QR</button>
+              <button className="edit-btn" onClick={handleVerRegistros}>Ver Registros de Oficina</button>
+              <button className="delete-btn" onClick={() => setVista('inicio')}>← Volver</button>
+            </div>
+          </>
+        )}
+
+        {mostrarQR && (
+          <div className="qr-container">
+            <h3>Código QR para {seleccion}</h3>
+            <QRCodeCanvas value={codigoQR} size={256} />
+          </div>
+        )}
+
+        {(vista === 'oficina' || vista === 'usuario') && seleccion && !mostrarQR && (
           <>
             <h2>{vista === 'oficina' ? `Registros de ${seleccion}` : `Historial de ${seleccion}`}</h2>
             <table className="access-table">
