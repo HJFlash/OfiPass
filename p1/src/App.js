@@ -10,7 +10,7 @@ function App() {
 
   return (
     <Router>
-      {/* Mostrar Navbar en todas las rutas excepto en login */}
+      {/* Mostrar Navbar en todas las rutas excepto en login test */}
       {isAuthenticated && <Navbar />}
       
       <Routes>
