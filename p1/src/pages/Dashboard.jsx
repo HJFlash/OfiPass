@@ -82,7 +82,7 @@ const Dashboard = () => {
         {mostrarQR && (
           <div className="qr-container">
             <h3>Código QR para {seleccion}</h3>
-            <QRCodeCanvas value={`https://localhost/asistencia/${encodeURIComponent(seleccion)}`} />
+            <QRCodeCanvas value={`https://ofi-pass.vercel.app/asistencia/${encodeURIComponent(seleccion)}`} />
 
           </div>
         )}
