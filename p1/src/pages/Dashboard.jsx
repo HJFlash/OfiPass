@@ -82,7 +82,8 @@ const Dashboard = () => {
         {mostrarQR && (
           <div className="qr-container">
             <h3>Código QR para {seleccion}</h3>
-            <QRCodeCanvas value={codigoQR} size={256} />
+            <QRCodeCanvas value={`https://localhost/asistencia/${encodeURIComponent(seleccion)}`} />
+
           </div>
         )}
 
