@@ -14,6 +14,8 @@ const Home = () => {
           <li>Asegúrate de que el código QR sea claramente visible para el lector en la entrada.</li>
           <li>Si utilizas una tarjeta RFID, simplemente acércala al lector para acceder.</li>
           <li>Si tienes problemas para escanear el QR, prueba a acercar más el dispositivo o limpiar la cámara.</li>
+
+          <li>Porfavor no tener en cuenta esta linea</li>
         </ul>
       </div>
     </div>
