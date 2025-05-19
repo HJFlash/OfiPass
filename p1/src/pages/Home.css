@@ -55,4 +55,38 @@
   .access-table th {
     background-color: #f0f0f0;
   }
-  
+  .home-btn {
+  background-color: #5fa8d3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  background-color: #4b94c1;
+}
+
+.important-box {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 15px;
+  margin-top: 30px;
+  border: 1px solid #ffeeba;
+  border-radius: 5px;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle.green {
+  background-color: green;
+}
+
+.circle.orange {
+  background-color: orange;
+}
