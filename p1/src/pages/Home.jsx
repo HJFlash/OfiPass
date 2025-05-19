@@ -45,7 +45,6 @@ const Home = () => {
 
         <div style={{ marginTop: '30px' }}>
           <button className="home-btn" onClick={() => navigate('/dashboard')}>Ir al Panel</button>
-          <button className="home-btn" onClick={() => navigate('/ver-asistencias/central')}>Ver Registros</button>
         </div>
 
         <div className="important-box">
