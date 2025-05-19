@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="dashboard-container">
       <div className="content">
@@ -41,8 +44,8 @@ const Home = () => {
         </table>
 
         <div style={{ marginTop: '30px' }}>
-          <button className="home-btn">Ver Registros</button>
-          <button className="home-btn">Ir al Panel</button>
+          <button className="home-btn" onClick={() => navigate('/dashboard')}>Ir al Panel</button>
+          <button className="home-btn" onClick={() => navigate('/ver-asistencias/central')}>Ver Registros</button>
         </div>
 
         <div className="important-box">
